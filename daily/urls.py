@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dailyfresh.views import register,register_handle,login
+from dailyfresh.views import *
+# from dailyfresh.views import order,register,register_handle,login,info,login_handle
 from django.urls import path,include
 # from . import dailyfresh
 
 urlpatterns = [
+    path('',index),
     path('admin/', admin.site.urls),
-    path('user/register',register),
+    path('user/register/',register),
     path('user/register_handle',register_handle),
-    path('user/login',login),
+    path('user/login/',login),
+    path('user/login_handle',login_handle),
+    path('user/info/',info),
+    path('user/order/',order),
+    path('user/cart/',cart),
+    path('user/site/',site),
     # path('user/',include('dailyfresh.urls'))
 ]
