@@ -22,14 +22,18 @@ from django.urls import path,include
 
 urlpatterns = [
     path('',index),
+    path('user/index/',index),
     path('admin/', admin.site.urls),
     path('user/register/',register),
     path('user/register_handle',register_handle),
     path('user/login/',login),
     path('user/login_handle',login_handle),
     path('user/info/',info),
-    path('user/order/',order),
+    path('user/order/',order),  
     path('user/cart/',cart),
     path('user/site/',site),
+    path('user/list/',list),
+    path('user/place_order/',place_order),
+    path('tinymce/',include('tinymce.urls')),
     # path('user/',include('dailyfresh.urls'))
 ]

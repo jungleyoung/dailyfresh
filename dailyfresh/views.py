@@ -5,7 +5,13 @@ from hashlib import sha1
 # Create your views here.
 
 def index(request):
-    return render(request,'df_user/index.html')
+    user_email=UserInfo.objects.get(id=request.session['user_id']).uemail
+    context={
+        'titile':'用户中心',
+        'user_email':user_email,
+        'user_name':request.session['user_name']
+    }
+    return render(request,'df_user/index.html',context)
 
 def register(request):
     return render(request,'df_user/register.html')
@@ -52,7 +58,7 @@ def login_handle(request):
         s1=sha1()
         s1.update(upwd.encode("utf8"))
         if s1.hexdigest()==users[0].upwd:
-            red=HttpResponseRedirect('/user/info/')
+            red=HttpResponseRedirect('/user/index/')
             #记住用户名
             if jizhu!=0:
                 red.set_cookie('uname',uname)
@@ -87,7 +93,6 @@ def info(request):
         'user_email':user_email,
         'user_name':request.session['user_name']
     }
-    print(user_email)
     return render(request, 'df_user/user_center_info.html',context)
 
 def cart(request):
@@ -116,3 +121,12 @@ def site(request):
 
     context={'title':'用户中心','user':user}
     return render(request,'df_user/user_center_site.html',context)
+
+# def tinymce():
+#     pass
+def list(request):
+    return render(request,"df_user/list.html")
+    # pass
+
+def place_order(request):
+    return render(request,'df_user/place_order.html')
