@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from dailyfresh.views import *
+from df_goods.views import index as index1
 # from dailyfresh.views import order,register,register_handle,login,info,login_handle
 from django.urls import path,include
 # from . import dailyfresh
 
 urlpatterns = [
+    path('index/',index1),
     path('',index),
     path('user/index/',index),
     path('admin/', admin.site.urls),

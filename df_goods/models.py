@@ -6,6 +6,8 @@ from tinymce.models import HTMLField
 class TypeInfo(models.Model):
     ttitle=models.CharField(max_length=20)
     isDelete=models.BooleanField(default=False)
+    def __str__(self):
+        return self.ttitle
 
 class GoodsInfo(models.Model):
     gtitle=models.CharField(max_length=20)
@@ -18,5 +20,7 @@ class GoodsInfo(models.Model):
     gstock=models.IntegerField()
     gcontent=HTMLField()
     gtype=models.ForeignKey(TypeInfo,on_delete=models.CASCADE)
-    gadv=models.IntegerField()
+    def __str__(self):
+        return self.gtitle
+    # gadv=models.BooleanField(default=False)
 # class

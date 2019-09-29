@@ -132,6 +132,7 @@ STATICFILES_DIRS=[
 
 ]
 # 上传文件目录
+# 部署之后需要修改路径
 MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 
 # 编辑器配置
